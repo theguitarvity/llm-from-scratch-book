@@ -1,6 +1,6 @@
 # Capítulo 33: Projeto James Jr. — Modelo Completo Funcional
 
-## 🎯 Objetivos
+## Objetivos
 
 Ao final deste capítulo, você será capaz de:
 
@@ -12,7 +12,7 @@ Ao final deste capítulo, você será capaz de:
 
 ---
 
-## 💡 Intuição
+## Por Que Isso Importa
 
 Finalmente, juntamos TUDO que aprendemos em um modelo de verdade.
 
@@ -26,7 +26,7 @@ James Jr. é pequeno (1-10M parâmetros), mas funciona:
 
 ---
 
-## 🏗️ Arquitetura
+## Arquitetura
 
 ```
 Input: "O gato"
@@ -52,7 +52,7 @@ Loss (Cross-Entropy)
 
 ---
 
-## 💻 Implementação Completa
+## Implementação Completa
 
 ```python
 import torch
@@ -287,7 +287,7 @@ if __name__ == "__main__":
 
 ---
 
-## 🧪 Teste Rápido
+## Teste Rápido
 
 ```python
 # Carregar modelo treinado
@@ -304,7 +304,7 @@ print(output)
 
 ---
 
-## ✍️ Exercícios
+## Exercícios
 
 ### Exercício 33.1: Treine e Gere
 Rode o código acima. Gere texto.

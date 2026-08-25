@@ -1,6 +1,6 @@
 # Capítulo 10: Mecanismo de Atenção
 
-## 🎯 Objetivos
+## Objetivos
 
 Ao final deste capítulo, você será capaz de:
 
@@ -12,7 +12,7 @@ Ao final deste capítulo, você será capaz de:
 
 ---
 
-## 💡 Intuição
+## Por Que Isso Importa
 
 Imagine que você está lendo uma frase:
 
@@ -173,7 +173,7 @@ output[0] = 0.362 * V[0] + 0.339 * V[1] + 0.298 * V[2]
 
 ---
 
-## 🧪 Experimento: Atenção Manual
+## Experimento: Atenção Manual
 
 Crie `experimento_atencao_manual.py`:
 
@@ -281,7 +281,7 @@ python experimento_atencao_manual.py
 
 ---
 
-## 🧪 Experimento 2: Matriz de Atenção Visual
+## Experimento 2: Matriz de Atenção Visual
 
 ```python
 import torch
@@ -333,7 +333,7 @@ for i in range(n):
 
 ---
 
-## ❌ Erros Comuns
+## Erros Comuns
 
 ### Erro 1: Não dividir por sqrt(d)
 
@@ -369,7 +369,7 @@ scores = Q @ K.T  # [n,d] @ [d,n] = [n,n]
 
 ---
 
-## ✍️ Exercícios
+## Exercícios
 
 ### Exercício 10.1: Computar Scores Manualmente
 Q = [[1, 0], [0, 1]], K = [[1, 1], [0, 0]]. Compute scores = Q @ K.T.
@@ -388,7 +388,7 @@ Dada matriz de atenção, para cada token, identifique qual token ele "mais olha
 
 ---
 
-## 📚 Gabarito
+## Gabarito
 
 ### Exercício 10.1: Scores
 ```python
@@ -462,7 +462,7 @@ for i in range(3):
 
 ---
 
-## 🎯 Exercícios de Fixação (Opcionais)
+## Desafios Avançados (Opcionais)
 
 ### Fixação 10.1: Diferentes d
 Compute atenção com d=4 e d=64. Como a divisão por sqrt(d) muda a distribuição?
@@ -483,7 +483,7 @@ Dica: use um vetor de máscara antes do softmax.
 
 ---
 
-## 🎓 Resumo
+## Resumo
 
 - **Atenção**: Mecanismo de ponderação baseado em relevância
 - **Q, K, V**: Query, Key, Value — papéis diferentes

@@ -1,6 +1,6 @@
 # Capítulo 16: Self-Attention Completo
 
-## 🎯 Objetivos
+## Objetivos
 
 Ao final deste capítulo, você será capaz de:
 
@@ -12,7 +12,7 @@ Ao final deste capítulo, você será capaz de:
 
 ---
 
-## 💡 Intuição
+## Por Que Isso Importa
 
 **Self-Attention** é o Capítulo 10 (Atenção) mas aplicado a si mesma: entrada é simultaneamente Q, K, V.
 
@@ -24,7 +24,7 @@ Resumo rápido:
 
 ---
 
-## 🔨 Implementação Manual
+## Implementação Manual
 
 ```python
 import torch
@@ -84,7 +84,7 @@ print(output.shape)  # [2, 10, 64]
 
 ---
 
-## 🎯 Com nn.Linear
+## Com nn.Linear
 
 Versão mais pythônica:
 
@@ -209,7 +209,7 @@ print("=" * 70)
 
 ---
 
-## 📊 Fluxo de Dados
+## Fluxo de Dados
 
 ```
 Input X [batch, seq_len, d_model]
@@ -227,7 +227,7 @@ attn_weights @ V → output [batch, seq_len, d_model]
 
 ---
 
-## ✍️ Exercícios
+## Exercícios
 
 ### Exercício 16.1: Forward Manual
 Implemente SelfAttention e faça forward com X [1, 3, 4].
@@ -246,14 +246,14 @@ Modifique SelfAttention para ter W_Q, W_K, W_V com bias.
 
 ---
 
-## 📚 Gabarito
+## Gabarito
 
 ### Exercício 16.1-16.5
 Veja estrutura de código acima.
 
 ---
 
-## 🎯 Exercícios de Fixação (Opcionais)
+## Exercícios de Fixação (Opcionais)
 
 ### Fixação 16.1: Causal Masking Preview
 Adicione máscara triangular após scores para que posição i não veja j > i.
@@ -266,7 +266,7 @@ Use d_k=32 para Q/K, d_v=8 para V. Como muda?
 
 ---
 
-## 🎓 Resumo
+## Resumo
 
 - **Self-Attention**: Atenção onde entrada é Q, K, V
 - **Shapes**: Preserva [batch, seq_len, d_model]

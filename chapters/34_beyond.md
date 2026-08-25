@@ -1,6 +1,6 @@
 # Capítulo 34: Além de James Jr. — Próximos Passos
 
-## 🎯 Objetivos
+## Objetivos
 
 Ao final deste capítulo, você será capaz de:
 
@@ -12,7 +12,7 @@ Ao final deste capítulo, você será capaz de:
 
 ---
 
-## 💡 Intuição
+## Por Que Isso Importa
 
 James Jr. é um modelo didático. Modelos de produção (GPT-4, Claude, Llama) são muito mais sofisticados.
 
@@ -220,7 +220,7 @@ scores = scorer.score(reference, prediction)
 
 ---
 
-## 📚 Recursos de Aprendizado
+## Recursos de Aprendizado
 
 ### Papers Essenciais
 - "Attention is All You Need" (Vaswani et al., 2017)
@@ -253,7 +253,7 @@ Você está aqui: passo 2.5 → 3.
 
 ---
 
-## ✍️ Desafios (Não Exercícios, Desafios!)
+## Desafios (Não Exercícios, Desafios!)
 
 ### Desafio 1: Treinar Modelo 100M
 Aumente James Jr para 100M parâmetros. Use distributed training. Tempo esperado: 1-2 horas em 4 GPUs.
@@ -283,7 +283,7 @@ Agora é com você. O mundo de LLMs é seu para explorar.
 
 ---
 
-## 🙏 Agradecimentos
+## Agradecimentos
 
 Parabéns por chegar até aqui! Você:
 
@@ -305,7 +305,7 @@ Boa sorte! 🚀
 
 ---
 
-## 📞 Perguntas? Contribuições?
+## Perguntas? Contribuições?
 
 Este livro é code-based, open for improvements. Se encontrou erro ou quer adicionar conteúdo:
 
