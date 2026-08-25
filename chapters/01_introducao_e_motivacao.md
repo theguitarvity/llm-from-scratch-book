@@ -1,255 +1,371 @@
 # Capítulo 01: Introdução e Motivação
 
-## 🎯 Objetivos
+## Objetivos
 
 Ao final deste capítulo, você será capaz de:
 
-1. Entender o que é uma Language Model (LM) em termos simples
-2. Saber por que estudar LLMs do zero é importante
-3. Conhecer a história breve que levou aos Transformers modernos
-4. Ver o "mapa mental" completo do que vamos construir
+1. Entender o que é uma Language Model e como funciona na prática
+2. Saber por que estudar LLMs do zero é importante (não apenas usar)
+3. Conhecer o caminho histórico que levou aos Transformers
+4. Ver o mapa completo do que vamos construir juntos
 
 ---
 
-## 💡 Intuição
+## O que É Uma Language Model (Realmente)
 
-Uma **Language Model** é uma máquina que aprendeu padrões em linguagem. Dado uma sequência de palavras, ela prediz qual é a próxima palavra mais provável.
+Imagine que você está escrevendo uma mensagem e a gente pausa no meio:
 
-Por exemplo:
-- Entrada: "O gato subiu no..."
-- Saída: distribuição de probabilidades para próxima palavra
-- Predição mais provável: "telhado", "árvore", "sofá" (em ordem de probabilidade)
+```
+Entrada: "Olá, tudo bem? Estou aprendendo sobre..."
+Saída esperada: distribuição de probabilidades
+```
 
-Essa habilidade simples — prever o próximo token — é surpreendentemente poderosa. Quando você treina em bilhões de palavras, o modelo aprende não apenas padrões linguísticos, mas conceitos, raciocínio, e até conhecimento de fatos.
+Uma Language Model vai dizer: "A próxima palavra é provavelmente 'machine learning' (45% chance), ou 'IA' (30%), ou 'redes neurais' (15%)".
 
----
+Ela não "sabe" a resposta certa. Ela aprendeu padrões em bilhões de textos: quando vê "aprendendo sobre", as próximas palavras mais comuns em seus dados foram essas.
 
-## 📖 Breve História
+```
+"Olá, tudo bem? Estou aprendendo sobre..."
+                                        ↓
+                    [LANGUAGE MODEL]
+                                        ↓
+        [machine learning: 45%, IA: 30%, redes: 15%, ...]
+```
 
-### A Pré-história: Modelos Antigos
-
-**n-gramas** (1990s): Contavam a frequência de sequências de n palavras. "O gato" → probabilidade do que vem depois.
-- Simples, mas sem real compreensão de contexto longínquo.
-
-**Redes Neurais Recorrentes (RNNs)** (2000s-2010s):
-- Processavam sequências passo a passo (token por token).
-- Memória em um estado oculto que "passava adiante".
-- **Problema**: memória curta efetiva, difícil de treinar com backpropagation através do tempo (BPTT).
-
-**LSTMs e GRUs** (2010s):
-- Mecanismos de "porta" para controlar fluxo de informação.
-- Melhor memória de longo termo.
-- Ainda linear na velocidade de processamento (tokens sequencialmente).
-
-### O Nascimento do Transformer (2017)
-
-Artigo: *"Attention is All You Need"* (Vaswani et al., 2017).
-
-**Inovação crucial**: Mecanismo de **Atenção** (Attention).
-- Ao invés de processar sequência token-por-token, processa *todo o contexto em paralelo*.
-- Cada token pode "olhar para" qualquer outro token na sequência.
-- Escalável com GPUs modernas.
-
-**Resultado**: Modelos maiores, treinamento mais rápido, melhor qualidade.
-
-### Explosão de Escala (2018-2024)
-
-- **BERT** (2018): Pré-treinamento bidirecional em massa.
-- **GPT** (2018): Pré-treinamento autoregressivo (esquerda para direita).
-- **GPT-2** (2019): 1.5B parâmetros. Surpreendentemente bom em tarefas não treinadas.
-- **GPT-3** (2020): 175B parâmetros. Few-shot learning. "Wow" da comunidade.
-- **GPT-4** (2023): Multimodal, ainda melhor raciocínio.
-- **Llama, Claude, Gemini** (2023-2024): Modelos open ou proprietary de alta qualidade.
-
-**Padrão observado**: Quanto maior o modelo e mais dados, melhor a performance. (Lei de escala empírica).
+Por que isso é útil? Porque essa habilidade aparentemente simples — prever o próximo token — quando aplicada repetidamente, gera textos coerentes. E quando o modelo é grande (treinado em bilhões de palavras), emergem capacidades surpreendentes: raciocínio, conhecimento de fatos, até código.
 
 ---
 
-## 🏗️ O que Vamos Construir
+## Histórico: Como Chegamos Aqui
 
-Neste livro, você construirá uma LLM completa do zero. Aqui está a progressão:
+Vou ser honesto: a história das Language Models é uma jornada de "caramba, isso não vai funcionar" → "espera, está funcionando".
 
-### Fase 1: Fundamentos (Capítulos 01-05)
-- Tensores e PyTorch: A ferramenta básica.
-- Álgebra linear: O idioma da IA.
-- Operações: Broadcasting, shapes, gradientes.
+### Fase 1: Abordagens Simples (1990s-2000s)
 
-### Fase 2: Blocos Básicos (Capítulos 06-15)
-- Embeddings: Como representar palavras em números.
-- Projeções lineares: Transformações.
-- **Atenção**: O mecanismo-chave.
+**n-gramas** era o jeito mais antigo. Você contava: quantas vezes "o gato" aparecia seguido de "subiu"? Quantas vezes de "dormiu"? E aí você estimava probabilidades.
 
-### Fase 3: Arquitetura Completa (Capítulos 16-25)
-- Multi-head attention: Múltiplas perspectivas paralelas.
-- Transformer block: A unidade de construção.
-- Tokenização e posicionamento: Preparar entrada.
+O problema: se a sequência nunca apareceu, você não sabia. E contexto distante era impossível. "Estou viajando para..." — a palavra "viagem" está longe demais, o n-grama (tipicamente n=3 ou n=5) não vê.
 
-### Fase 4: Treinamento (Capítulos 26-30)
-- Loss (cross-entropy) e otimizadores (Adam).
-- Loop de treinamento autoregressivo.
-- Debugging e avaliação.
+```
+"Estou viajando para..." (100 palavras depois) "...foi incrível"
+                    ↑
+                n-grama não vê isso
+```
 
-### Fase 5: Geração (Capítulos 31-32)
-- Sampling, temperature, top-k.
-- Completação de texto.
+### Fase 2: Redes Recorrentes (2000s-2015)
 
-### Fase 6: Projeto James Jr. (Capítulos 33-34)
-- Modelo completo, treinado, salvável e carregável.
-- Geração de texto fim a fim.
+Aí chegaram as **RNNs** (Recurrent Neural Networks). A ideia era: ao invés de contar frequências, use uma rede neural que processa token por token, mantendo uma "memória" (um vetor oculto) que passa de um token para o próximo.
+
+```
+"Estou" → [rede neural] → estado oculto v1
+   ↓
+   v1 + "viajando" → [rede neural] → estado oculto v2
+   ↓
+   v2 + "para" → [rede neural] → estado oculto v3
+   ...
+   (100 passos depois)
+   v100 → prediz "foi"
+```
+
+Problema: aquele estado oculto precisa "lembrar" de informação de 100 passos atrás. Na prática, a informação se dilui. É como passar um recado de boca em boca em uma fila de 100 pessoas — no final, ninguém lembra o original.
+
+**LSTMs** (2015) tentaram consertar isso com "portas" que controlam o quê memorizar. Melhorou, mas ainda era lento (precisava processar sequencialmente).
+
+### Fase 3: O Transformer (2017)
+
+Aí em 2017 saiu um paper chamado "Attention is All You Need".
+
+**A ideia**: esqueça processar sequencialmente. Processe tudo em paralelo. Use um mecanismo chamado **Atenção** que deixa cada token "olhar para" todos os outros tokens na sequência de uma vez.
+
+```
+"Estou viajando para ... foi incrível"
+  ↑
+  Este token pode olhar DIRETO para "viajando", "incrível", 
+  qualquer um, sem passar por 100 intermediários
+```
+
+Por que isso importa? Porque GPUs são muito boas em computação paralela. Todas as palavras podem ser processadas ao mesmo tempo. Treinar 100x mais rápido.
+
+Resultado: escalaram para modelos gigantes, bilhões de parâmetros.
+
+### Fase 4: A Explosão (2018-2024)
+
+```
+2018: BERT, GPT (150M parâmetros) → "isso é legal"
+2019: GPT-2 (1.5B) → "caramba, gera texto coerente"
+2020: GPT-3 (175B) → "espera, faz coisas não treinadas?"
+2023: GPT-4, Claude, Llama → "isso pensa?"
+2024: Modelos ainda maiores e mais especializados
+```
+
+A observação empírica: quanto maior o modelo, quanto mais dados, melhor. Simples assim. Não é mágica — é escala.
+
+```mermaid
+graph LR
+    A["n-gramas<br/>(1990s)<br/>Simples, lento"] -->|10 anos| B["RNNs/LSTMs<br/>(2010)<br/>Melhor, ainda lento"]
+    B -->|7 anos| C["Transformers<br/>(2017)<br/>Rápido, escalável"]
+    C -->|7 anos| D["LLMs Grandes<br/>(2024)<br/>Muito capazes"]
+    
+    style A fill:#f9f9f9
+    style D fill:#e8f4f8
+```
 
 ---
 
-## 🧠 Filosofia: Entender Antes de Abstrair
+## O Plano: Do Zero até Gerar Texto
 
-Este livro segue uma regra de ouro:
+Vou ser direto: este livro segue uma progressão que vai de "PyTorch básico" até "você treina um modelo de verdade e gera texto".
 
-> **Implemente explicitamente com tensores ANTES de usar abstrações.**
+```mermaid
+graph TD
+    A["Capítulos 1-5<br/>Tensores & Álgebra Linear"]
+    B["Capítulos 6-9<br/>Embeddings & Projeções"]
+    C["Capítulos 10-16<br/>Atenção & Self-Attention"]
+    D["Capítulos 17-25<br/>Transformer Completo"]
+    E["Capítulos 26-30<br/>Treinamento"]
+    F["Capítulos 31-32<br/>Geração de Texto"]
+    G["Capítulos 33-34<br/>Projeto James Jr."]
+    
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    
+    G -->|Resultado| H["LLM Funcional<br/>Que Você Construiu"]
+    
+    style H fill:#e8f4f8,stroke:#333,stroke-width:2px
+```
 
-Exemplo:
-- Capítulos 06-09: Implementamos embedding e projeções com `.matmul()` direto.
-- Capítulo 16: Depois envolvemos em uma classe, entender o que ela faz.
-- Capítulo 33: Usamos `nn.Linear` confiadamente porque *já sabemos o que ela faz*.
+Cada fase constrói sobre a anterior. Não tem atalho: você precisa entender tensores antes de embeddings, embeddings antes de atenção, etc.
 
-Por que? Porque **abstração sem compreensão é mágica, não entendimento**. 
-
-Quando você vê `nn.MultiheadAttention` funcionar depois de implementar manualmente, você não apenas sabe *como* funciona — você sente na carne o que está acontecendo nos números.
-
----
-
-## 📊 Exemplos Recorrentes
-
-Ao longo do livro, usaremos o mesmo pequeno exemplo muitas vezes:
-
-**Sequência de entrada**: "O gato"
-- Tokenizado: [tok_O, tok_gato]
-- Tensor de embeddings: Shape [1, 2, 4]
-  - Batch size 1
-  - Comprimento de sequência 2
-  - Embedding dim 4
-
-**Pesos de atenção**: Shape [4, 4]
-- Porque queremos projetar embedding de dim 4 para dim 4
-
-Esses pequenos números fazem tudo ficar legível. Você verá todos os valores.
+Por que essa ordem? Porque é a ordem em que os dados fluem através de uma Language Model real.
 
 ---
 
-## 🛠️ Implementação Mínima: Um Toy Model
+## Por Que Construir do Zero?
 
-Vamos ver (muito brevemente) como uma LLM *completa* se vê:
+Aqui está a questão que você pode estar fazendo: "Não posso só usar HuggingFace Transformers e fazer fine-tuning?"
+
+Tecnicamente, sim. Mas está perdendo a oportunidade de realmente entender o que está acontecendo.
+
+Vou dar um exemplo real: você está treinando um modelo e de repente pega NaN (Not a Number) na loss. Isso acontece toda hora em deep learning.
+
+Se você usar uma biblioteca pré-pronta como caixa preta, você vai clicar aleatoriamente em hiperparâmetros até funcionar. "Vou tentar learning rate menor... não, maior... talvez mudar batch size..."
+
+Mas se você implementou o modelo manualmente, você sabe: "Espera, NaN geralmente significa exploding gradients. Deixa eu verificar os pesos iniciais... ah, estão com desvio padrão muito grande. Vou usar Xavier initialization."
+
+**Entendimento permite debug.**
+
+```
+Usar caixa preta sem entender:
+  Erro → Clicar aleatório → Erro diferente → Clicar mais → 😤
+
+Entender o mecanismo:
+  Erro → Hipótese sobre causa → Teste → Aprendizado → ✓
+```
+
+Então aqui está a filosofia deste livro:
+
+1. Implementar com operações explícitas (`.matmul()`, não `nn.Linear`)
+2. Entender o que está acontecendo nos números
+3. Depois usar abstrações (nn.Module) confiadamente
+4. E quando der problema, você sabe debugar
+
+Isso leva mais tempo inicialmente. Vale a pena.
+
+---
+
+## Os Exemplos que Vamos Usar
+
+Para manter tudo concreto e legível, vamos repetir os mesmos exemplos pequenos durante todo o livro.
+
+**Exemplo Padrão de Entrada**:
+
+```
+Frase: "O gato dormia"
+Vocabulário: 1000 palavras diferentes
+Embedding dimension: 4 (espaço bem pequeno para ver os números)
+
+Tokenizado: [token_id=1, token_id=2, token_id=3]
+Shape: [3] (3 tokens)
+
+Com batch: [batch_size=2, seq_len=3]
+Shape real: [2, 3]
+
+Com embeddings: [batch_size=2, seq_len=3, d_model=4]
+Shape: [2, 3, 4] ← verá cada número em uma tabela
+```
+
+Por que esses números pequenos?
+
+```
+Embedding dimension = 4 significa você verá 16 números por token
+Se usasse d_model=768 (real), veria 2304 números
+Impossível fazer sentido visualmente
+
+Com 4, você entende. Depois escala para 768
+```
+
+**Pesos (Matrizes de Transformação)**:
+
+Quando projetarmos embeddings (transformar de uma dimensão para outra), usaremos matrizes da forma [4, 4], [4, 2], etc. Sempre números pequenos que você consegue ver.
+
+---
+
+## O Código que Você Vai Escrever
+
+Quero ser claro: o "toy model" abaixo é tudo o que você vai construir e entender no final. Mas aqui está o ponto:
 
 ```python
-import torch
-import torch.nn as nn
-
-class TinyLM(nn.Module):
-    def __init__(self, vocab_size, d_model, num_layers, num_heads):
+class LLMPequena(nn.Module):
+    def __init__(self, vocab_size, d_model):
         super().__init__()
+        
+        # Entender embedding
         self.embed = nn.Embedding(vocab_size, d_model)
         
-        self.transformer = nn.ModuleList([
-            nn.TransformerEncoderLayer(
-                d_model=d_model,
-                nhead=num_heads,
-                batch_first=True
-            ) for _ in range(num_layers)
-        ])
+        # Entender self-attention
+        self.attention = SelfAttention(d_model)
         
+        # Entender feedforward
+        self.mlp = FeedForward(d_model)
+        
+        # Saída
         self.head = nn.Linear(d_model, vocab_size)
     
     def forward(self, input_ids):
-        # input_ids: [batch, seq_len]
-        x = self.embed(input_ids)  # [batch, seq_len, d_model]
-        
-        for layer in self.transformer:
-            x = layer(x)  # [batch, seq_len, d_model]
-        
-        logits = self.head(x)  # [batch, seq_len, vocab_size]
+        x = self.embed(input_ids)           # Capítulo 6-7
+        x = self.attention(x)               # Capítulo 10-16
+        x = self.mlp(x)                     # Capítulo 20
+        logits = self.head(x)               # Capítulo 26
         return logits
-
-# Uso
-model = TinyLM(vocab_size=1000, d_model=64, num_layers=2, num_heads=4)
-input_ids = torch.randint(0, 1000, (2, 10))  # batch de 2, seq len 10
-logits = model(input_ids)  # [2, 10, 1000]
 ```
 
-Isso é uma LLM válida, funcional. Mas **você não entende o que cada operação faz**.
-
-Neste livro, você entenderá. Implementará cada linha você mesmo. E quando usar `nn.Linear`, saberá exatamente o que está acontecendo.
+Você não vai copiar isso. Você vai *construir* cada linha entendendo o quê está fazendo e por quê.
 
 ---
 
-## 🔍 Erros Comuns ao Começar
+## Erros Comuns que as Pessoas Fazem
 
-1. **"Não preciso de álgebra linear, só quero usar PyTorch"**
-   - ❌ Erro. Toda operação em deep learning é operação linear (ou ativação).
-   - ✅ Invista 2-3 horas em álgebra linear agora, economize semanas depois.
+Vou ser honesto sobre as armadilhas que vejo o tempo todo:
 
-2. **"Vou pular para usar `transformers` library"**
-   - ❌ Você perderá a chance de entender o que os Transformers *realmente* fazem.
-   - ✅ Faça do zero primeiro. Use a library depois, com confiança.
+### "Vou pular álgebra linear"
 
-3. **"Shapes de tensores são fáceis"**
-   - ❌ Novamente, erro. 80% dos bugs em deep learning são de shape errado.
-   - ✅ Neste livro, você verá e debugará shapes constantemente.
+Você pensa: "Eu só quero usar PyTorch, não preciso de matemática."
 
-4. **"LLMs são magic, não posso entender"**
-   - ❌ Mentira. É matemática + código, ambos entendíveis.
-   - ✅ Se você chegou aqui, você consegue. Paciência.
+Realidade: 80% dos problemas que você vai ter (exploding gradients, NaN, modelo não converge) são problemas de álgebra linear que você não consegue debugar sem entender a matemática.
 
----
+Exemplo real: Um dia você vê seu modelo retornando NaN. Sem álgebra linear, você pensa "deixa eu tentar outro learning rate". Com álgebra linear, você pensa "matriz mal condicionada" → reduz escala → pronto.
 
-## ✍️ Exercícios
+Tempo para aprender: 2-3 horas. Economia posterior: semanas de debugging.
 
-### Exercício 1.1: Histórico Pessoal
-Escreva 3 frases sobre um modelo de linguagem que você usou (ChatGPT, Claude, etc.). O que você acha que está acontecendo "por trás" quando ele responde uma pergunta?
+### "Vou direto usar HuggingFace Transformers"
 
-**Dica**: Não precisa estar certo. Trata-se de ancorar o que você já sabe.
+Claro, você consegue. Mas aí é como dirigir um carro sem saber como funciona o motor. Funciona até quebrar.
 
-### Exercício 1.2: Predição Next-Token
-Dada a sequência: "Inteligência Artificial é...", liste 5 palavras prováveis como próximo token. 
+O objetivo aqui é você saber o que está acontecendo dentro. Depois, quando usar Transformers, você vai debugar melhor e fazer ajustes mais inteligentes.
 
-Qual você acha que um modelo bem treinado teria como TOP-1 (mais provável)?
+### "Shapes são detalhe, não precisam ler e debugá los"
 
-### Exercício 1.3: Tamanho de Modelo
-Pesquise os tamanhos de 3 modelos (GPT-3, Llama 2, Claude): quantos bilhões de parâmetros? Escreva em seu caderno.
+Isto é errado. Literalmente 80% dos bugs em deep learning são "shape mismatch" — você tenta multiplicar [32, 10] por [64, 5] e a dimensão não bate.
+
+Neste livro vamos ficar muito focado em shapes. Por quê? Porque uma vez que você domina, o resto é fácil.
+
+### "LLMs são mágica, não vou entender"
+
+Aqui está a verdade: Transformers são 90% matemática e 10% "trick" de engenharia. A matemática é entendível. Não há mágica real.
+
+Se você consegue somar números, você consegue entender transformers.
 
 ---
 
-## 📚 Gabarito e Reflexão
+## Para Você Praticar (Não é Teste)
 
-### Exercício 1.1: Histórico Pessoal
-Não há resposta única. Exemplos válidos:
-- "Digitei uma pergunta e ele respondeu. Acho que procurou em um banco de dados."
-- "Deve usar padrões de muitos textos para gerar novo texto."
+Esses exercícios não têm "resposta certa". São para você pensar.
 
-O ponto é que você está fazendo uma hipótese. Neste livro, confirmaremos se ela está perto da realidade.
+### Exercício 1: O que Você Já Sabe
 
-### Exercício 1.2: Predição Next-Token
-Palavras prováveis:
-- "uma", "o", "a", "fundamental", "importante"
+Você já usou ChatGPT, Claude, ou outro LLM? Escreva em 3-4 frases:
 
-GPT-3 provavelmente teria TOP-1 = "uma" ou "o" (artigos são frequentes após verbo-ser).
+1. Qual foi a resposta mais útil que você recebeu?
+2. O que você acha que estava acontecendo "por trás" para gerar essa resposta?
 
-### Exercício 1.3: Tamanho de Modelo
-- GPT-3: 175B parâmetros
-- Llama 2 (70B): 70B parâmetros  
-- Claude 3: ~200B+ (Anthropic não divulga exato)
+Não precisa estar tecnicamente certo. Estamos apenas ancorar o que você já observou.
 
-Perspectiva: Um parâmetro ≈ um "número que o modelo aprendeu". 175 bilhões é muito. Seu cérebro tem ~86 bilhões neurônios, mas modelos de IA não são neurônios 1:1.
+### Exercício 2: Predição de Próxima Palavra
+
+Complete a frase. Você pode falar 5 palavras que faria sentido:
+
+```
+"Estou aprendendo sobre inteligência artificial porque..."
+```
+
+Agora, qual você acha que um modelo grande colocaria como **mais provável (TOP-1)**?
+
+Exemplo de resposta: 
+- Palavras possíveis: é importante, quero trabalhar, é fascinante, preciso, gosto
+- TOP-1 provável: "quero trabalhar" (muito comum em contexto educacional)
+
+### Exercício 3: Escala
+
+Procure online (ou deixa que te digo):
+- Quantos parâmetros tem GPT-4?
+- Quantos tem Llama 2 70B?
+- Quantos bilhões é isso comparado ao número de neurônios do seu cérebro (~86B)?
+
+Escreva os números. Depois pense: quanto maior o modelo, provavelmente melhor. Você concorda?
 
 ---
 
-## 🎓 Resumo
+## Respostas Esperadas (Para Você Comparar)
 
-- Uma **Language Model** aprende a prever o próximo token em uma sequência.
-- **Transformers** (2017) revolucionaram por permitir paralelização via atenção.
-- Nós vamos **construir do zero**, entendendo cada camada.
-- **Filosofia**: Implementação explícita antes de abstrações.
-- Prepare-se para matemática, código e debugging.
+### Exercício 1: O que Você Já Sabe
 
-No próximo capítulo: configuramos nosso ambiente PyTorch e testamos instalação.
+Não há resposta única. Mas você deve ter alguma observação. A gente tira daí.
+
+### Exercício 2: Predição
+
+Palavras que fazem sentido:
+- "quero trabalhar", "é importante", "é fascinante", "preciso saber", "gosto"
+
+Modelos grandes tipicamente colocam "quero trabalhar" ou "é importante" como TOP-1, porque são muito frequentes em textos educacionais.
+
+### Exercício 3: Escala
+
+Números reais (aproximados):
+- GPT-4: não é público, estimativas 170B-1T (varia muito)
+- Llama 2 70B: 70 bilhões de parâmetros
+- Cérebro humano: 86 bilhões de neurônios (mas é diferente de parâmetros)
+
+A tendência histórica: modelos maiores são sempre melhores. Isso é chamado "scaling laws" — quanto mais parâmetros e dados, melhor a performance.
 
 ---
 
-**Próximo**: [Capítulo 02: Setup do Ambiente](02_setup_ambiente.md)
+## Resumo: Por Que Este Livro Existe
+
+Você pode aprender LLMs de duas formas:
+
+1. Usar bibliotecas prontas → rápido, mas é mágica
+2. Construir do zero → demorado, mas entende tudo
+
+Este livro escolhe a rota 2. Por quê?
+
+Porque quando você entender cada operação (embedding, atenção, treinamento), você consegue:
+- Debugar quando algo quebra
+- Fazer alterações inteligentes
+- Ler papers de pesquisa e entender
+- Contribuir com ideias novas
+
+Alguns números para te motivar:
+- 13 capítulos de fundamentos
+- 15+ experimentos que você roda com seus próprios olhos
+- 50+ exercícios
+- 1 projeto final: um LLM que VOCÊ construiu
+
+Tempo investido: 50-60 horas de leitura + implementação
+
+Valor? Você não apenas usa LLMs. Você os constrói.
+
+Próximo passo: [Capítulo 02: Setup do Ambiente](02_setup_ambiente.md)
