@@ -1,6 +1,6 @@
 # Capítulo 05: Operações Básicas
 
-## 🎯 Objetivos
+## Objetivos
 
 Ao final deste capítulo, você será capaz de:
 
@@ -12,7 +12,7 @@ Ao final deste capítulo, você será capaz de:
 
 ---
 
-## 💡 Intuição
+## Por Que Isso Importa
 
 Neste capítulo, cobrimos as "ferramentas do dia a dia" que você usará constantemente. Não são conceitos profundos — são habilidades práticas que precisa dominar.
 
@@ -20,7 +20,7 @@ Pense como aprender uma linguagem de programação: primeiro você aprende `for`
 
 ---
 
-## ✂️ Indexação e Slicing
+## Indexação e Slicing (Pegar Partes de Tensores)
 
 ### Básico
 
@@ -84,7 +84,7 @@ print(torch.index_select(x, 0, indices))  # [1., 3., 5.]
 
 ---
 
-## 📊 Operações Elemento-wise
+## Operações Elemento-wise
 
 ### Aritméticas
 
@@ -124,7 +124,7 @@ print(torch.round(torch.tensor([1.3, 1.7, 2.5])))  # [1, 2, 2]
 
 ---
 
-## 📉 Reduções
+## Reduções (Aggregating Data)
 
 ### Sum, Mean, Max
 
@@ -168,7 +168,7 @@ print(torch.cumprod(x, dim=0)) # [1, 2, 6, 24]
 
 ---
 
-## 🔄 Manipulação de Shapes
+## Manipulação de Shapes
 
 ### Reshape e View
 
@@ -244,7 +244,7 @@ s_list = torch.stack([a, b], dim=0).unbind(dim=0)  # [a, b]
 
 ---
 
-## 🎯 Ativações (Activations)
+## Ativações (Funções Não-Lineares)
 
 Essas não são "operações básicas" puro, mas as usaremos constantemente. Familiarize-se:
 
@@ -293,7 +293,7 @@ print(torch.tanh(x))  # [-0.76, 0, 0.76]
 
 ---
 
-## 🧪 Experimento: Operações em Sequências
+## Experimento: Operações em Sequências
 
 Crie `experimento_operacoes.py`:
 
@@ -425,7 +425,7 @@ python experimento_operacoes.py
 
 ---
 
-## ❌ Erros Comuns
+## Erros Comuns
 
 ### Erro 1: Confundir * com @
 
@@ -464,7 +464,7 @@ c = a.expand(5, 10) + b.expand(5, 10)
 
 ---
 
-## ✍️ Exercícios
+## Para Você Praticar
 
 ### Exercício 5.1: Indexação
 Crie um tensor [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]. Acesse apenas elementos pares.
@@ -483,7 +483,7 @@ Crie logits [1, 2, 3]. Compute softmax. Verifique que soma é 1.
 
 ---
 
-## 📚 Gabarito
+## Respostas
 
 ### Exercício 5.1: Indexação
 ```python
@@ -523,7 +523,7 @@ print(probs.sum())  # tensor(1.)
 
 ---
 
-## 🎯 Exercícios de Fixação (Opcionais)
+## Desafios Avançados (Opcionais)
 
 ### Fixação 5.1: Batch Processing
 Crie um tensor [32, 10, 64] representando batch de 32 exemplos, cada um com 10 tokens e embedding dim 64.
@@ -561,7 +561,7 @@ $$\hat{x} = \frac{x - \mu}{\sqrt{\sigma^2 + \epsilon}}$$
 
 ---
 
-## 🎓 Resumo
+## Resumo
 
 - **Indexação**: Acesso e slicing são práticos
 - **Reduções**: sum, mean, max com dim controls
