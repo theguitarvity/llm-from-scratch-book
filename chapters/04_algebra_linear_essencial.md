@@ -1,6 +1,6 @@
 # Capítulo 04: Álgebra Linear Essencial
 
-## 🎯 Objetivos
+## Objetivos
 
 Ao final deste capítulo, você será capaz de:
 
@@ -12,7 +12,7 @@ Ao final deste capítulo, você será capaz de:
 
 ---
 
-## 💡 Intuição
+## Por Que Isso Importa
 
 **Álgebra linear é a linguagem de deep learning.** Toda rede neural é uma série de transformações lineares (matrizes) combinadas com ativações (não-linearidades).
 
@@ -25,7 +25,7 @@ Sem entender álgebra linear, você está fazendo magia. Com ela, você vê os m
 
 ---
 
-## 📐 Vetores e Matrizes
+## Vetores e Matrizes (Noções Básicas)
 
 ### Notação
 
@@ -48,7 +48,7 @@ Uma matriz com shape [m, n] tem:
 
 ---
 
-## ⭐ Multiplicação Matricial (o coração de tudo)
+## Multiplicação Matricial (O Coração de Tudo)
 
 ### Multiplicação Matriz-Vetor
 
@@ -95,7 +95,7 @@ Mas note: **$A \times B \neq B \times A$** em geral. Não é comutativa!
 
 ---
 
-## 🎯 Produto Escalar e Normas
+## Produto Escalar e Normas
 
 ### Produto Escalar (Dot Product)
 
@@ -150,7 +150,7 @@ $$d(\mathbf{v}, \mathbf{w}) = \|\mathbf{v} - \mathbf{w}\|_2$$
 
 ---
 
-## 🔄 Inversão e Rank
+## Inversão e Rank (Propriedades Importantes)
 
 ### Inversa
 
@@ -190,7 +190,7 @@ rank = torch.linalg.matrix_rank(A)  # 1
 
 ---
 
-## 🧠 Decomposição de Matrizes
+## Decomposição de Matrizes (Técnicas Avançadas)
 
 ### Eigendecomposição
 
@@ -228,7 +228,7 @@ U, S, Vt = torch.linalg.svd(A)
 
 ---
 
-## 🧪 Experimento: Álgebra Linear Explícita
+## Experimento: Álgebra Linear Explícita
 
 Crie `experimento_algebra_linear.py`:
 
@@ -416,7 +416,7 @@ python experimento_algebra_linear.py
 
 ---
 
-## ❌ Erros Comuns
+## Erros Comuns
 
 ### Erro 1: Shapes Incompatíveis em Matmul
 
@@ -458,7 +458,7 @@ A_pinv = torch.linalg.pinv(A)
 
 ---
 
-## ✍️ Exercícios
+## Para Você Praticar
 
 ### Exercício 4.1: Multiplicação Manual
 Compute manualmente $\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} \begin{pmatrix} 5 \\ 6 \end{pmatrix}$. Depois verifique com PyTorch.
@@ -477,7 +477,7 @@ Qual é o rank de $\begin{pmatrix} 1 & 2 & 3 \\ 2 & 4 & 6 \end{pmatrix}$?
 
 ---
 
-## 📚 Gabarito
+## Respostas
 
 ### Exercício 4.1: Multiplicação Manual
 
@@ -507,7 +507,7 @@ Rank = 1. (Segunda linha é 2x primeira linha)
 
 ---
 
-## 🎯 Exercícios de Fixação (Opcionais)
+## Desafios Avançados (Opcionais)
 
 ### Fixação 4.1: Matriz de Rotação
 Uma matriz de rotação 2D por ângulo $\theta$ é:
@@ -542,7 +542,7 @@ Crie exemplo prático.
 
 ---
 
-## 🎓 Resumo
+## Resumo
 
 - **Multiplicação matricial**: $[m, n] @ [n, p] = [m, p]$
 - **Produto escalar**: Mede similaridade entre vetores
