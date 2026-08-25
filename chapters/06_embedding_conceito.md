@@ -1,6 +1,6 @@
 # Capítulo 06: O Conceito de Embedding
 
-## 🎯 Objetivos
+## Objetivos
 
 Ao final deste capítulo, você será capaz de:
 
@@ -12,7 +12,7 @@ Ao final deste capítulo, você será capaz de:
 
 ---
 
-## 💡 Intuição
+## Por Que Isso Importa
 
 Imagine que você quer representar palavras para uma rede neural.
 
@@ -51,7 +51,7 @@ Em vez de one-hot, aprendemos uma representação densa:
 
 ---
 
-## 📐 Embedding como Lookup Table
+## Embedding como Lookup Table
 
 Formalmente, um **embedding** é uma matriz $\mathbf{E} \in \mathbb{R}^{V \times d}$ onde:
 - $V$ = tamanho do vocabulário (número de tokens únicos)
@@ -241,7 +241,7 @@ PyTorch "faz a mágica" de indexação em batch. Veremos isso no próximo capít
 
 ---
 
-## 🧪 Experimento: Embeddings Simples
+## Experimento: Embeddings Simples
 
 Crie `experimento_embeddings.py`:
 
@@ -377,7 +377,7 @@ python experimento_embeddings.py
 
 ---
 
-## ❌ Erros Comuns
+## Erros Comuns
 
 ### Erro 1: Confundir token ID com embedding
 
@@ -413,7 +413,7 @@ E = torch.randn(V, d, requires_grad=True)
 
 ---
 
-## ✍️ Exercícios
+## Exercícios
 
 ### Exercício 6.1: Matriz de Embedding
 Crie uma matriz de embedding [5, 3] representando 5 tokens e embedding dim 3.
@@ -432,7 +432,7 @@ Normalize um embedding para ter norma L2 = 1.
 
 ---
 
-## 📚 Gabarito
+## Gabarito
 
 ### Exercício 6.1: Matriz de Embedding
 ```python
@@ -466,7 +466,7 @@ e_normalized = e / torch.norm(e)  # [0.6, 0.8]
 
 ---
 
-## 🎯 Exercícios de Fixação (Opcionais)
+## Desafios Avançados (Opcionais)
 
 ### Fixação 6.1: Distância Euclidiana
 Dois embeddings e1, e2. Compute distância Euclidiana.
@@ -493,7 +493,7 @@ Dado um embedding arbitrário q (query), projete-o no espaço de embedding mais 
 
 ---
 
-## 🎓 Resumo
+## Resumo
 
 - **Embedding**: Representação densa de tokens, aprendível
 - **Lookup**: Acessar matriz E por token ID

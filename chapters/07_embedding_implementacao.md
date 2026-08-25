@@ -1,6 +1,6 @@
 # Capítulo 07: Implementação de Embeddings
 
-## 🎯 Objetivos
+## Objetivos
 
 Ao final deste capítulo, você será capaz de:
 
@@ -12,7 +12,7 @@ Ao final deste capítulo, você será capaz de:
 
 ---
 
-## 💡 Intuição
+## Por Que Isso Importa
 
 No capítulo anterior, vimos embeddings conceitualmente. Agora vamos **implementar de verdade**.
 
@@ -131,7 +131,7 @@ embedding.weight.data[0] = 0  # Token 0 = padding, embeddings zeros
 
 ---
 
-## 🧪 Experimento 1: Embedding Manual vs nn.Embedding
+## Experimento 1: Embedding Manual vs nn.Embedding
 
 Crie `experimento_embedding_manual.py`:
 
@@ -226,7 +226,7 @@ python experimento_embedding_manual.py
 
 ---
 
-## 🧪 Experimento 2: Matriz de Similaridade
+## Experimento 2: Matriz de Similaridade
 
 Crie `experimento_similaridade.py`:
 
@@ -343,7 +343,7 @@ embedding.weight.data[padding_idx] = 0
 
 ---
 
-## 🔍 Entendendo Gradientes em Embeddings
+## Entendendo Gradientes em Embeddings
 
 ```python
 # Dados de entrada
@@ -371,7 +371,7 @@ Isso é importante: **tokens frequentes recebem mais atualizações**, tokens ra
 
 ---
 
-## ❌ Erros Comuns
+## Erros Comuns
 
 ### Erro 1: Token ID fora de range
 
@@ -406,7 +406,7 @@ init.normal_(emb.weight, mean=0, std=0.02)
 
 ---
 
-## ✍️ Exercícios
+## Exercícios
 
 ### Exercício 7.1: Embedding Manual
 Implemente `EmbeddingManual` sem gradientes. Faça lookup de token 3 em vocab_size=10.
@@ -425,7 +425,7 @@ Crie embedding e inicialize com `uniform(-0.05, 0.05)`. Verifique que todos valo
 
 ---
 
-## 📚 Gabarito
+## Gabarito
 
 ### Exercício 7.1: Embedding Manual
 ```python
@@ -476,7 +476,7 @@ print(emb.weight.min().item() >= -0.05)  # True
 
 ---
 
-## 🎯 Exercícios de Fixação (Opcionais)
+## Desafios Avançados (Opcionais)
 
 ### Fixação 7.1: Embedding com Padding
 Crie embedding com padding_idx=0. Verifique que peso[0] é sempre 0 mesmo após atualização.
@@ -497,7 +497,7 @@ Compute a norma L2 de todos embeddings. Use como regularização na loss.
 
 ---
 
-## 🎓 Resumo
+## Resumo
 
 - **Implementação manual**: Lookup + requires_grad
 - **nn.Embedding**: Abstração de lookup treinável
