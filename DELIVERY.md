@@ -1,4 +1,4 @@
-# 📚 Entrega: James Jr. — Construindo uma LLM do Zero
+# 📚 Entrega: LLMScratch — Construindo uma LLM do Zero
 
 **Data**: 2026-08-25  
 **Status**: Fase 1 Completa (Fundamentos + Prototipo Funcional)  
@@ -29,8 +29,8 @@
 | # | Capítulo | Status | Tipo | Linhas |
 |---|----------|--------|------|--------|
 | 16 | Self-Attention Completo | ✅ | Implementação | ~250 |
-| 33 | Projeto James Jr. Completo | ✅ | Projeto End-to-End | ~300 |
-| 34 | Além de James Jr. | ✅ | Conclusão + Recursos | ~250 |
+| 33 | Projeto LLMScratch Completo | ✅ | Projeto End-to-End | ~300 |
+| 34 | Além de LLMScratch | ✅ | Conclusão + Recursos | ~250 |
 
 ### 📋 Estrutura Auxiliar
 
@@ -153,7 +153,7 @@ Para cada capítulo:
 
 ### 4. Projeto Final
 
-Capítulo 33: Execute `train()` para treinar James Jr.
+Capítulo 33: Execute `train()` para treinar LLMScratch
 
 ```bash
 # Em capítulo 33, execute:
@@ -225,7 +225,7 @@ Para cada capítulo major:
 
 ### Fase 4: Projeto Estendido (4-8 semanas)
 
-- Treinar James Jr. em dados reais (OpenWebText)
+- Treinar LLMScratch em dados reais (OpenWebText)
 - Integração com HuggingFace
 - Fine-tuning para tarefas específicas
 - Benchmarking contra baselines
@@ -323,7 +323,7 @@ less chapters/01_introducao_e_motivacao.md
 - [ ] Fiz exercícios e comparei com gabarito
 - [ ] Li Capítulo 06-10 (Atenção)
 - [ ] Implementei Self-Attention manualmente (Cap 16)
-- [ ] Treinei James Jr. (Cap 33)
+- [ ] Treinei LLMScratch (Cap 33)
 - [ ] Gerói texto com modelo treinado
 - [ ] Salvar e recarreguei checkpoint
 - [ ] Explorei ideias do Cap 34

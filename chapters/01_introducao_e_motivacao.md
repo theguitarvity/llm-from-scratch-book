@@ -124,7 +124,7 @@ graph TD
     D["Capítulos 17-25<br/>Transformer Completo"]
     E["Capítulos 26-30<br/>Treinamento"]
     F["Capítulos 31-32<br/>Geração de Texto"]
-    G["Capítulos 33-34<br/>Projeto James Jr."]
+    G["Capítulos 33-34<br/>Projeto LLMScratch"]
     
     A --> B
     B --> C

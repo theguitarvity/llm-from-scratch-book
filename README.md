@@ -1,4 +1,4 @@
-# James Jr. — Construindo uma LLM do Zero
+# LLMScratch — Construindo uma LLM do Zero
 
 Uma apostila completa em português brasileiro sobre os fundamentos de Large Language Models, com foco em entender os conceitos antes de abstrair.
 
@@ -82,12 +82,12 @@ Uma apostila completa em português brasileiro sobre os fundamentos de Large Lan
 | [31](chapters/31_sampling_temperature.md) | Sampling, Temperature e Top-K/P | Greedy vs. sampling; temperature; filtragem. |
 | [32](chapters/32_geracao_texto.md) | Geração de Texto Completa | Loop de geração; concatenação de sequências; qualidade. |
 
-### **Parte IX: Projeto James Jr.**
+### **Parte IX: Projeto LLMScratch**
 
 | Capítulo | Título | Tópicos |
 |----------|--------|---------|
-| [33](chapters/33_projeto_james_jr.md) | Projeto James Jr. — Modelo Completo | Juntando tudo; treinamento end-to-end; inferência. |
-| [34](chapters/34_James_Jr_avancado.md) | Além de James Jr. | Otimizações; distributed training; fine-tuning; próximos passos. |
+| [33](chapters/33_projeto_james_jr.md) | Projeto LLMScratch — Modelo Completo | Juntando tudo; treinamento end-to-end; inferência. |
+| [34](chapters/34_James_Jr_avancado.md) | Além de LLMScratch | Otimizações; distributed training; fine-tuning; próximos passos. |
 
 ---
 
@@ -157,7 +157,7 @@ EOF
 
 - **Gradientes são sua ferramenta de debugging**: Se algo não funciona, veja os gradientes. Eles contam histórias.
 
-- **James Jr. não é SOTA**: Ele é educacional. O objetivo é entender como LLMs funcionam, não competir com GPT-4.
+- **LLMScratch não é SOTA**: Ele é educacional. O objetivo é entender como LLMs funcionam, não competir com GPT-4.
 
 ---
 

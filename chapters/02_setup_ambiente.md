@@ -187,7 +187,7 @@ import torch
 import numpy as np
 
 print("\n" + "="*60)
-print("TEST: James Jr. Environment Setup")
+print("TEST: LLMScratch Environment Setup")
 print("="*60 + "\n")
 
 # Versions
@@ -241,7 +241,7 @@ python test_setup.py
 Esperado (Apple Silicon):
 
 ```
-TEST: James Jr. Environment Setup
+TEST: LLMScratch Environment Setup
 
 Versions:
   PyTorch: 2.0.1

@@ -1,10 +1,10 @@
-# Capítulo 33: Projeto James Jr. — Modelo Completo Funcional
+# Capítulo 33: Projeto LLMScratch — Modelo Completo Funcional
 
 ## Objetivos
 
 Ao final deste capítulo, você será capaz de:
 
-1. Implementar uma LLM pequenininha completa (James Jr.)
+1. Implementar uma LLM pequenininha completa (LLMScratch)
 2. Treinar em dados de verdade (simples)
 3. Fazer inferência e gerar texto
 4. Salvar e carregar checkpoints
@@ -16,7 +16,7 @@ Ao final deste capítulo, você será capaz de:
 
 Finalmente, juntamos TUDO que aprendemos em um modelo de verdade.
 
-James Jr. é pequeno (1-10M parâmetros), mas funciona:
+LLMScratch é pequeno (1-10M parâmetros), mas funciona:
 - Tokenização
 - Embeddings
 - Transformer blocks
@@ -330,7 +330,7 @@ Compute perplexidade no dataset.
 - ✅ Você gerou texto
 - ✅ Agora você entende como ChatGPT/Claude funcionam em alto nível
 
-Próximo: **Além de James Jr.** — otimizações, distributed training, fine-tuning.
+Próximo: **Além de LLMScratch** — otimizações, distributed training, fine-tuning.
 
 ---
 
@@ -338,4 +338,4 @@ Próximo: **Além de James Jr.** — otimizações, distributed training, fine-t
 
 ---
 
-**Próximo**: [Capítulo 34: Além de James Jr.](34_beyond.md)
+**Próximo**: [Capítulo 34: Além de LLMScratch](34_beyond.md)

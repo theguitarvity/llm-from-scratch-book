@@ -1,4 +1,4 @@
-# Progresso de Desenvolvimento - James Jr. LLM Book
+# Progresso de Desenvolvimento - LLMScratch LLM Book
 
 ## ✅ Capítulos Completos (10/34)
 
@@ -56,9 +56,9 @@
 - ⏳ **31** - Sampling, Temperature e Top-K/P (geração vs greedy)
 - ⏳ **32** - Geração de Texto Completa (loop de geração)
 
-### Parte IX: Projeto James Jr.
-- ⏳ **33** - Projeto James Jr. — Modelo Completo (integração)
-- ⏳ **34** - Além de James Jr. (otimizações, próximos passos)
+### Parte IX: Projeto LLMScratch
+- ⏳ **33** - Projeto LLMScratch — Modelo Completo (integração)
+- ⏳ **34** - Além de LLMScratch (otimizações, próximos passos)
 
 ---
 
@@ -89,7 +89,7 @@
 
 ### Longo Prazo (Para Aplicar)
 1. Capítulo 31-32: Sampling, Geração (2 caps)
-2. Capítulo 33-34: Projeto James Jr. Completo (2 caps)
+2. Capítulo 33-34: Projeto LLMScratch Completo (2 caps)
 3. Total: Apostila Completa (34 capítulos)
 
 ---

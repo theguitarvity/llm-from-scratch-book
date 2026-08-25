@@ -1,10 +1,10 @@
-# Capítulo 34: Além de James Jr. — Próximos Passos
+# Capítulo 34: Além de LLMScratch — Próximos Passos
 
 ## Objetivos
 
 Ao final deste capítulo, você será capaz de:
 
-1. Entender as limitações de James Jr.
+1. Entender as limitações de LLMScratch
 2. Saber como escalar para modelos maiores
 3. Conhecer técnicas de otimização práticas
 4. Explorar distributed training e fine-tuning
@@ -14,38 +14,38 @@ Ao final deste capítulo, você será capaz de:
 
 ## Por Que Isso Importa
 
-James Jr. é um modelo didático. Modelos de produção (GPT-4, Claude, Llama) são muito mais sofisticados.
+LLMScratch é um modelo didático. Modelos de produção (GPT-4, Claude, Llama) são muito mais sofisticados.
 
 Aqui cobrimos o gap entre "eu entendo os conceitos" e "eu posso trabalhar em modelos reais".
 
 ---
 
-## 📊 Limitações de James Jr.
+## 📊 Limitações de LLMScratch
 
 ### 1. Tamanho
 
-James Jr: 1-10M parâmetros  
+LLMScratch: 1-10M parâmetros  
 Modelos reais: 7B-175B parâmetros
 
 **Solução**: Aumentar vocab_size, d_model, num_layers.
 
 ### 2. Dados
 
-James Jr: Alguns textos dummy  
+LLMScratch: Alguns textos dummy  
 Modelos reais: Trilhões de tokens (web, livros, código)
 
 **Solução**: Usar datasets públicos (OpenWebText, CommonCrawl).
 
 ### 3. Treinamento
 
-James Jr: CPU/MPS, um device  
+LLMScratch: CPU/MPS, um device  
 Modelos reais: Distribuído em centenas de GPUs/TPUs
 
 **Solução**: PyTorch Distributed, Ray, DeepSpeed.
 
 ### 4. Avaliação
 
-James Jr: Perplexidade  
+LLMScratch: Perplexidade  
 Modelos reais: Benchmarks (MMLU, HELM, AGI Eval)
 
 **Solução**: Avaliar em múltiplos datasets de verdade.
@@ -66,7 +66,7 @@ CONFIG = {
 }
 
 # Parâmetros ~ d_model^2 * num_layers
-# James Jr: ~0.1M
+# LLMScratch: ~0.1M
 # Novo: ~500M parâmetros
 ```
 
@@ -256,7 +256,7 @@ Você está aqui: passo 2.5 → 3.
 ## Desafios (Não Exercícios, Desafios!)
 
 ### Desafio 1: Treinar Modelo 100M
-Aumente James Jr para 100M parâmetros. Use distributed training. Tempo esperado: 1-2 horas em 4 GPUs.
+Aumente LLMScratch para 100M parâmetros. Use distributed training. Tempo esperado: 1-2 horas em 4 GPUs.
 
 ### Desafio 2: Fine-tuning para Tarefa Específica
 Escolha uma tarefa (poetry, code, math). Fine-tune um modelo pequeno. Avalie em holdout.
@@ -274,7 +274,7 @@ Encontre issue em HuggingFace/PyTorch/vLLM. Abra PR. Aprenda com code review.
 
 ## 🎓 Resumo
 
-- **James Jr**: Você construiu do zero. Entende cada linha.
+- **LLMScratch**: Você construiu do zero. Entende cada linha.
 - **Escalabilidade**: Sabe como crescer para modelos reais.
 - **Prática**: Conhece ferramentas, técnicas, recursos.
 - **Pesquisa**: Sabe onde está a fronteira.

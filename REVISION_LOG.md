@@ -1,4 +1,4 @@
-# Revisão de Conteúdo - James Jr. LLM Book
+# Revisão de Conteúdo - LLMScratch LLM Book
 
 **Data**: 2026-08-25  
 **Status**: ✅ TODAS AS ONDAS COMPLETAS (Capítulos 01-34 Revisados)
@@ -20,8 +20,8 @@
 | 09 | Origem dos Parâmetros | Removido emojis, inicialização Xavier/Kaiming explicada |
 | 10 | Mecanismo de Atenção | Removido emojis, mantido rigor matemático com clareza |
 | 16 | Self-Attention Completo | Removido emojis, implementação manual e com nn.Linear |
-| 33 | Projeto James Jr. | Removido emojis, modelo completo funcional |
-| 34 | Além de James Jr. | Removido emojis, próximos passos e pesquisa aberta |
+| 33 | Projeto LLMScratch | Removido emojis, modelo completo funcional |
+| 34 | Além de LLMScratch | Removido emojis, próximos passos e pesquisa aberta |
 
 ### Mudanças Consistentes Aplicadas
 
@@ -54,7 +54,7 @@
 ✅ **Onda 7**: Capítulos 08-09 (Projeções e Parâmetros)  
 ✅ **Onda 8**: Capítulo 10 (Atenção)  
 ✅ **Onda 9**: Capítulo 16 (Self-Attention)  
-✅ **Onda 10**: Capítulos 33-34 (James Jr. e Beyond)
+✅ **Onda 10**: Capítulos 33-34 (LLMScratch e Beyond)
 
 ## Commits Realizados
 

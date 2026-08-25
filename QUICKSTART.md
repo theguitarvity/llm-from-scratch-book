@@ -1,4 +1,4 @@
-# 🚀 Quick Start — James Jr. LLM Book
+# 🚀 Quick Start — LLMScratch LLM Book
 
 Guia de 5 minutos para começar.
 
@@ -97,12 +97,12 @@ EOF
 
 ---
 
-## 6️⃣ Treine James Jr. (Cap 33)
+## 6️⃣ Treine LLMScratch (Cap 33)
 
 ```bash
 # Copie código do Capítulo 33 e execute
 python3 << 'EOF'
-# (Copie implementação de James Jr. do Capítulo 33)
+# (Copie implementação de LLMScratch do Capítulo 33)
 # Chame train()
 EOF
 
@@ -125,7 +125,7 @@ python train_james_jr.py
 
 Agora que entende:
 
-1. **Modifique hyperparameters** de James Jr.
+1. **Modifique hyperparameters** de LLMScratch
 2. **Experimente com seus dados**
 3. **Implemente novas features**
 4. **Compare com HuggingFace Transformers**
