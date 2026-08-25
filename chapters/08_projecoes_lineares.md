@@ -1,6 +1,6 @@
 # Capítulo 08: Projeções Lineares
 
-## 🎯 Objetivos
+## Objetivos
 
 Ao final deste capítulo, você será capaz de:
 
@@ -12,7 +12,7 @@ Ao final deste capítulo, você será capaz de:
 
 ---
 
-## 💡 Intuição
+## Por Que Isso Importa
 
 Uma **projeção linear** é simplesmente uma multiplicação matricial + bias.
 
@@ -30,7 +30,7 @@ Onde:
 
 ---
 
-## 📐 Matemática
+## Matemática
 
 ### Simples: Vetor à Vetor
 
@@ -66,7 +66,7 @@ $$\frac{\partial L}{\partial \mathbf{b}} = \sum_{i} \frac{\partial L}{\partial y
 
 ---
 
-## 🔨 Implementação Manual
+## Implementação Manual
 
 ```python
 import torch
@@ -111,7 +111,7 @@ print(f"b gradientes: {layer.b.grad}")
 
 ---
 
-## 🎯 nn.Linear
+## nn.Linear
 
 PyTorch fornece `nn.Linear` que faz tudo:
 
@@ -131,7 +131,7 @@ print(layer.bias.shape)    # [out]
 
 ---
 
-## 🧪 Experimento 1: Linear Manual vs nn.Linear
+## Experimento 1: Linear Manual vs nn.Linear
 
 ```python
 import torch
@@ -236,7 +236,7 @@ print("=" * 70)
 
 ---
 
-## 🧪 Experimento 2: Shapes em Diferentes Contextos
+## Experimento 2: Shapes em Diferentes Contextos
 
 ```python
 import torch
@@ -322,7 +322,7 @@ print("=" * 70)
 
 ---
 
-## ❌ Erros Comuns
+## Erros Comuns
 
 ### Erro 1: Shapes Incompatíveis
 
@@ -361,7 +361,7 @@ y = x @ W + b  # [4, 3]
 
 ---
 
-## ✍️ Exercícios
+## Exercícios
 
 ### Exercício 8.1: Linear Manual
 Implemente LinearManual com in_features=3, out_features=2. Faça forward com x [1, 3].
@@ -380,7 +380,7 @@ x tem shape [2, 10, 64] (sequência). Passe por Linear(64, 128). Output?
 
 ---
 
-## 📚 Gabarito
+## Gabarito
 
 ### Exercício 8.1: Linear Manual
 ```python
@@ -435,7 +435,7 @@ print(y.shape)  # [2, 10, 128]
 
 ---
 
-## 🎯 Exercícios de Fixação (Opcionais)
+## Exercícios de Fixação (Opcionais)
 
 ### Fixação 8.1: Composição de Lineares
 Crie duas camadas Linear(10, 5) e Linear(5, 2). Passe x [1, 10] através de ambas.
@@ -456,7 +456,7 @@ $$L_{total} = L_{task} + \lambda \|W\|_2$$
 
 ---
 
-## 🎓 Resumo
+## Resumo
 
 - **Projeção linear**: $y = x @ W + b$
 - **Manual**: Entender shapes e gradientes

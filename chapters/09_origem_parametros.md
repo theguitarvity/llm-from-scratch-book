@@ -1,6 +1,6 @@
 # Capítulo 09: Origem dos Parâmetros W e b
 
-## 🎯 Objetivos
+## Objetivos
 
 Ao final deste capítulo, você será capaz de:
 
@@ -12,7 +12,7 @@ Ao final deste capítulo, você será capaz de:
 
 ---
 
-## 💡 Intuição
+## Por Que Isso Importa
 
 Os parâmetros W e b não são "dados". São valores que o modelo **aprende durante o treinamento**.
 
@@ -23,7 +23,7 @@ Inicialização boa = convergência rápida.
 
 ---
 
-## 📐 Por Que W Tem Shape [in_features, out_features]?
+## Por Que W Tem Shape [in_features, out_features]?
 
 Uma transformação linear projeta de um espaço para outro:
 
@@ -53,7 +53,7 @@ Entrada:        Pesos:          Saída:
 
 ---
 
-## 🎯 Por Que b Tem Shape [out_features]?
+## Por Que b Tem Shape [out_features]?
 
 O bias adiciona um offset (deslocamento) a cada dimensão de saída:
 
@@ -140,7 +140,7 @@ W é uma matriz ortogonal. Preserva normas de sinais.
 
 ---
 
-## 📊 Comparação: O Que Acontece
+## Comparação: O Que Acontece
 
 Simule o forward pass com diferentes inicializações:
 
@@ -185,7 +185,7 @@ for name, init_fn in strategies.items():
 
 ---
 
-## ⚠️ Problemas Comuns de Inicialização
+## Problemas Comuns de Inicialização
 
 ### Problema 1: Exploding Gradients
 
@@ -210,7 +210,7 @@ layer = nn.Linear(100, 100)
 
 ---
 
-## 🧪 Experimento: Inicialização e Treinamento
+## Experimento: Inicialização e Treinamento
 
 ```python
 import torch
@@ -301,7 +301,7 @@ for name, param in model.named_parameters():
 
 ---
 
-## ✍️ Exercícios
+## Exercícios
 
 ### Exercício 9.1: Shape de W
 Linear(5, 3): qual é o shape de W? (Lembre: nn.Linear armazena [out, in])
@@ -320,7 +320,7 @@ Crie nn.Linear. Imprima W.norm(). É razoável?
 
 ---
 
-## 📚 Gabarito
+## Gabarito
 
 ### Exercício 9.1: Shape de W
 ```python
@@ -356,7 +356,7 @@ print(layer.weight.norm().item())  # Típico: 1.0 - 2.0 (Xavier)
 
 ---
 
-## 🎯 Exercícios de Fixação (Opcionais)
+## Exercícios de Fixação (Opcionais)
 
 ### Fixação 9.1: Calcular Xavier
 $$\text{std} = \sqrt{\frac{2}{d_{in} + d_{out}}}$$
@@ -379,7 +379,7 @@ Após backward, verifique que W.grad.norm() é razoável (não NaN, não infinit
 
 ---
 
-## 🎓 Resumo
+## Resumo
 
 - **W shape**: [in_features, out_features] (ou transposto em nn.Linear)
 - **b shape**: [out_features]
