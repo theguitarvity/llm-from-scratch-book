@@ -1,106 +1,145 @@
 # Capítulo 03: Tensores e PyTorch
 
-## 🎯 Objetivos
+## Objetivos
 
 Ao final deste capítulo, você será capaz de:
 
-1. Entender o que é um tensor e como diferencia de escalares, vetores, matrizes
-2. Criar e manipular tensores em PyTorch
-3. Entender e debugar shapes (o 80% dos bugs em IA)
-4. Usar broadcasting efetivamente
-5. Entender gradientes e como PyTorch os computa
-6. Realizar operações básicas: transposta, reshape, indexação
+1. Criar tensores e entender o que são
+2. Trabalhar com shapes (dimensões) — 80% dos bugs vêm daqui
+3. Fazer operações básicas: soma, multiplicação, transposta
+4. Usar broadcasting (a "mágica" do PyTorch)
+5. Calcular e entender gradientes (como o modelo aprende)
 
 ---
 
-## 💡 Intuição
+## O que É Um Tensor, De Verdade
 
-Um **tensor** é uma coleção n-dimensional de números. Pense em generalização:
+Um tensor é uma coleção de números organizados em dimensões. Generalização simples:
 
-- **Escalar** (0D): Um número. Exemplo: `5.0`
-- **Vetor** (1D): Uma linha de números. Exemplo: `[1, 2, 3]`
-- **Matriz** (2D): Uma grade de números. Exemplo: `[[1, 2], [3, 4]]`
-- **Tensor** (3D+): Espaços de números. Exemplo: `[[[1, 2], [3, 4]], [[5, 6], [7, 8]]]`
+```
+0D (Escalar):      5
+                   Um número só
 
-Na prática, ao trabalhar com LLMs:
-- Sequência de tokens em um batch forma um tensor 2D: [batch_size, seq_len]
-- Embeddings desses tokens forma 3D: [batch_size, seq_len, embedding_dim]
-- Pesos de uma rede neural são tensores: [input_dim, output_dim]
+1D (Vetor):        [1, 2, 3, 4]
+                   Uma sequência
 
-**PyTorch** é a biblioteca que facilita criar, manipular e otimizar esses tensores, especialmente em GPUs.
+2D (Matriz):       [[1, 2, 3],
+                    [4, 5, 6]]
+                   Uma grade
 
----
-
-## 📐 Shape: O Conceito Mais Importante
-
-Ao trabalhar com deep learning, você passa **80% do tempo debugando shapes**. Entender shapes é entender IA.
-
-### Notação
-
-Usamos `[d0, d1, d2, ...]` para descrever o shape.
-
-Exemplo:
-```python
-x = torch.randn(2, 3, 4)
-# Shape: [2, 3, 4]
-# Significa: 2 "folhas", cada uma com 3 linhas e 4 colunas
-# Total de números: 2 * 3 * 4 = 24 elementos
+3D (Tensor):       [[[1, 2],
+                     [3, 4]],
+                    [[5, 6],
+                     [7, 8]]]
+                   Um cubo de números
 ```
 
-### Terminologia
+**Em LLMs, você verá:**
 
-```python
-x = torch.randn(2, 3, 4)
-
-# Tamanho total de elementos
-x.numel()  # 24
-
-# Número de dimensões
-x.ndim  # 3
-
-# Tipo de dado
-x.dtype  # torch.float32
-
-# Dispositivo
-x.device  # cpu ou mps ou cuda
-
-# Shape
-x.shape  # torch.Size([2, 3, 4])
+```mermaid
+graph LR
+    A["Texto: 'O gato dormia'"]
+    B["Tokenizado: [1, 2, 3]<br/>Shape: [3]"]
+    C["Com batch: [2, 3]<br/>2 sequências"]
+    D["Com embeddings: [2, 3, 64]<br/>Cada token tem 64 números"]
+    
+    A --> B --> C --> D
 ```
+
+Entender shapes é entender 80% do que vai dar problema em deep learning.
+
+**PyTorch** é a ferramenta que permite você criar, manipular e otimizar esses tensores em GPU (muito rápido).
 
 ---
 
-## 🏗️ Criando Tensores
+## Shape: O Conceito Que Vai Te Salvar
 
-### Formas Comuns
+Todo erro que você vai ter relacionado a tensores é um erro de shape.
+
+```
+"RuntimeError: mat1 and mat2 shapes cannot be multiplied"
+                    ↓
+                Shape mismatch
+```
+
+### Nomenclatura
+
+Usamos `[tamanho0, tamanho1, tamanho2]` para descrever shape:
 
 ```python
 import torch
 
-# De valores específicos
-x = torch.tensor([1.0, 2.0, 3.0])  # [3]
+x = torch.randn(2, 3, 4)
+# Shape [2, 3, 4]:
+#   - Dimensão 0: tamanho 2
+#   - Dimensão 1: tamanho 3  
+#   - Dimensão 2: tamanho 4
+# Total de números: 2 × 3 × 4 = 24
+
+# Explorar o tensor
+x.shape      # torch.Size([2, 3, 4])
+x.ndim       # 3 (número de dimensões)
+x.numel()    # 24 (número total de elementos)
+x.dtype      # torch.float32 (tipo numérico)
+x.device     # cpu, mps, cuda, etc
+```
+
+Na prática de LLMs:
+
+```
+[batch_size, seq_len, embedding_dim]
+[32, 10, 64]  ← seu tensor típico durante treinamento
+```
+
+- 32 = você processa 32 exemplos de uma vez
+- 10 = cada sequência tem 10 tokens (máximo)
+- 64 = cada token é representado por 64 números (embedding)
+
+---
+
+## Criando Tensores (Todos os Jeitos)
+
+Na prática, você cria tensores de poucas formas:
+
+```python
+import torch
+
+# 1. Do zero (valores específicos que você define)
+x = torch.tensor([1.0, 2.0, 3.0])        # [3]
 X = torch.tensor([[1.0, 2.0], [3.0, 4.0]])  # [2, 2]
 
-# Aleatório (normal, entre 0-1)
-x = torch.randn(3, 4)  # Normal gaussiana, [3, 4]
-x = torch.rand(3, 4)   # Uniforme [0, 1), [3, 4]
+# 2. Aleatório (usado pra inicializar pesos)
+x = torch.randn(3, 4)   # Números aleatórios, distribuição normal [3, 4]
+x = torch.rand(3, 4)    # Aleatório entre 0 e 1 [3, 4]
 
-# Especiais
-zeros = torch.zeros(2, 3)  # [2, 3] of 0s
-ones = torch.ones(2, 3)    # [2, 3] of 1s
-identity = torch.eye(3)    # [3, 3] matriz identidade
+# 3. Especiais (zeros, uns, identidade)
+zeros = torch.zeros(2, 3)  # Matriz de zeros [2, 3]
+ones = torch.ones(2, 3)    # Matriz de uns [2, 3]
+identity = torch.eye(3)    # Identidade [3, 3]
 
-# Sequência
-arange = torch.arange(0, 10)  # [0, 1, 2, ..., 9]
-linspace = torch.linspace(0, 1, 5)  # [0, 0.25, 0.5, 0.75, 1]
+# 4. Sequências
+seq1 = torch.arange(0, 10)          # [0, 1, 2, ..., 9]
+seq2 = torch.linspace(0, 1, 5)      # [0, 0.25, 0.5, 0.75, 1]
+```
 
-# Cheio de um valor
-full = torch.full((2, 3), 7.0)  # [2, 3] cheio de 7s
+**Que você usará mais?**
+
+- `torch.randn()` — inicializar pesos aleatoriamente
+- `torch.tensor()` — dados que você já tem
+- `torch.zeros()` / `torch.ones()` — raramente, mas às vezes
+
+Quando criar tensores para treinamento, sempre especifique `device`:
+
+```python
+device = "mps"  # ou "cuda" ou "cpu"
+
+x = torch.randn(2, 3, 4, device=device)
+# Já começa no device certo, não precisa mover depois
 ```
 
 ---
 
-## 🔄 Operações de Shape
+## Operações de Shape (Reorganizar Dados)
 
 ### Transposta
 
@@ -152,7 +191,7 @@ stacked = torch.stack([a, b], dim=1)  # [2, 2, 3] - outra ordem
 
 ---
 
-## ➕ Operações Básicas
+## Operações Básicas
 
 ### Elemento-wise
 
@@ -214,7 +253,7 @@ soma_keepdim = x.sum(dim=1, keepdim=True)  # [[6], [15]] em vez de [6, 15]
 
 ---
 
-## 📡 Broadcasting
+## Broadcasting
 
 Broadcasting é a "mágica" do PyTorch que permite operações entre tensores de shapes diferentes.
 
@@ -270,7 +309,7 @@ resultado = embeddings - bias  # [32, 10, 64]
 
 ---
 
-## 🎯 Gradientes e Autograd
+## Gradientes e Autograd (Como o Modelo Aprende)
 
 PyTorch computa gradientes **automaticamente**. Aqui está como:
 
@@ -345,7 +384,7 @@ print(x.grad)  # tensor(12.)
 
 ---
 
-## 🧪 Experimento: Shapes e Broadcasting
+## Experimento: Shapes e Broadcasting
 
 Crie `experimento_shapes.py`:
 
@@ -495,7 +534,7 @@ Z = X @ W + b, Z.shape: torch.Size([4, 2])
 
 ---
 
-## ❌ Erros Comuns
+## Erros Comuns que as Pessoas Fazem
 
 ### Erro 1: Shapes Incompatíveis em Matmul
 
@@ -566,7 +605,7 @@ Você tem X [10, 20], W [20, 5], b [5]. Compute Z = X @ W + b. Qual é o shape d
 
 ---
 
-## 📚 Gabarito
+## Respostas
 
 ### Exercício 3.1: Shapes
 ```python
@@ -610,7 +649,7 @@ print(Z.shape)  # [10, 5]
 
 ---
 
-## 🎓 Resumo
+## Resumo
 
 - **Tensores**: Generalização de escalares, vetores, matrizes.
 - **Shapes**: Descrevem dimensões. São cruciais para debug.
