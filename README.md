@@ -89,6 +89,12 @@ Uma apostila completa em português brasileiro sobre os fundamentos de Large Lan
 | [33](chapters/33_projeto_james_jr.md) | Projeto LLMScratch — Arquitetura Modular | Scaffold inspirado em Clean Architecture; projeto arquivo por arquivo; treino e inferência end-to-end. |
 | [34](chapters/34_beyond.md) | Além de LLMScratch | Otimizações; distributed training; fine-tuning; próximos passos. |
 
+### **Guias Extras**
+
+| Guia | Tópicos |
+|------|---------|
+| [Treinamento com Dados Reais](GUIA_TREINAMENTO_DADOS_REAIS.md) | Datasets públicos (TinyStories, Wikipedia PT, OSCAR, C4); tokenizer BPE real; escalando o projeto modular do Capítulo 33 para treino em corpus real, com warmup, cosine decay e avaliação. |
+
 ---
 
 ## 🎯 Como Usar Este Livro
