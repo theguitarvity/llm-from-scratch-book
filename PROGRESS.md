@@ -1,6 +1,6 @@
 # Progresso de Desenvolvimento - LLMScratch LLM Book
 
-## ✅ Capítulos Completos (10/34)
+## ✅ Capítulos Completos (34/34)
 
 ### Parte I: Fundamentos
 - ✅ **01** - Introdução e Motivação (completo)
@@ -15,50 +15,44 @@
 - ✅ **08** - Projeções Lineares (y = xW + b, manual + nn.Linear)
 - ✅ **09** - Origem dos Parâmetros W e b (inicialização, Xavier, Kaiming)
 
-### Parte III: Atenção Fundamentada
+### Parte III: Atenção e Self-Attention
 - ✅ **10** - Mecanismo de Atenção (Q, K, V, scores, softmax, output)
-
----
-
-## 📝 Capítulos Planejados (ainda não feitos)
-
-### Parte III (continuação): Self-Attention
-- ⏳ **11** - Query, Key, Value Explicados (projeções, intuição)
-- ⏳ **12** - Attention Scores (dot product, interpretação)
-- ⏳ **13** - Scaling por sqrt(d_k) e Softmax (estabilidade numérica)
-- ⏳ **14** - Weighted Sum de V (combinação linear)
-- ⏳ **15** - Causal Masking (para autoregressive)
-- ⏳ **16** - Self-Attention Completo (montando tudo)
+- ✅ **11** - Query, Key, Value Explicados (projeções independentes, self vs cross-attention)
+- ✅ **12** - Attention Scores (dot product, interpretação geométrica)
+- ✅ **13** - Scaling por sqrt(d_k) e Softmax (estabilidade numérica, saturação)
+- ✅ **14** - Weighted Sum de V (combinação convexa, vs mean pooling)
+- ✅ **15** - Causal Masking (máscara triangular, -inf antes do softmax)
+- ✅ **16** - Self-Attention Completo (montando tudo, gradientes end-to-end)
 
 ### Parte IV: Multi-Head e Normalização
-- ⏳ **17** - Multi-Head Attention (paralelo, concatenação, W_o)
-- ⏳ **18** - Residual Connections (skip connections)
-- ⏳ **19** - Layer Normalization (gamma, beta, LN vs BN)
+- ✅ **17** - Multi-Head Attention (paralelo, concatenação, W_o)
+- ✅ **18** - Residual Connections (skip connections, gradient highway)
+- ✅ **19** - Layer Normalization (gamma, beta, LN vs BN, Pre-LN vs Post-LN)
 
 ### Parte V: Arquitetura Transformer
-- ⏳ **20** - MLP e Feed-Forward Network (expansão, contração, ReLU)
-- ⏳ **21** - Bloco Transformer Completo (tudo junto)
-- ⏳ **22** - Positional Embeddings (sinusoidal, aprendível)
-- ⏳ **23** - Arquitetura Fim a Fim (stacks de blocos)
+- ✅ **20** - MLP e Feed-Forward Network (expansão 4x, GELU)
+- ✅ **21** - Bloco Transformer Completo (attention + FFN + residual + norm)
+- ✅ **22** - Positional Embeddings (sinusoidal, aprendível, RoPE)
+- ✅ **23** - Arquitetura Fim a Fim (GPTModel completo, weight tying)
 
 ### Parte VI: Tokenização e Input
-- ⏳ **24** - Tokenização (BPE conceitual, splitting)
-- ⏳ **25** - Vocabulary e Context Windows (tamanho, padding)
+- ✅ **24** - Tokenização (BPE do zero, tokens especiais)
+- ✅ **25** - Vocabulary e Context Windows (trade-offs, custo O(n²))
 
 ### Parte VII: Treinamento
-- ⏳ **26** - Logits e Cross-Entropy Loss (output layer, perplexidade)
-- ⏳ **27** - Backpropagação e Gradientes (chain rule, fluxo reverso)
-- ⏳ **28** - Otimizadores (SGD, Momentum, Adam, aprendizado)
-- ⏳ **29** - Treinamento Autoregressivo (loop, next token prediction)
-- ⏳ **30** - Checkpoints e Avaliação (salvar, validação, debugging)
+- ✅ **26** - Logits e Cross-Entropy Loss (softmax, MLE, perplexidade)
+- ✅ **27** - Backpropagação e Gradientes (chain rule, autograd, clipping)
+- ✅ **28** - Otimizadores (SGD, Momentum, Adam, AdamW)
+- ✅ **29** - Treinamento Autoregressivo (shift-by-one, teacher forcing)
+- ✅ **30** - Checkpoints e Avaliação (save/load, overfitting, debugging)
 
 ### Parte VIII: Geração e Prática
-- ⏳ **31** - Sampling, Temperature e Top-K/P (geração vs greedy)
-- ⏳ **32** - Geração de Texto Completa (loop de geração)
+- ✅ **31** - Sampling, Temperature e Top-K/P (greedy, nucleus sampling)
+- ✅ **32** - Geração de Texto Completa (loop autoregressivo, KV-cache)
 
 ### Parte IX: Projeto LLMScratch
-- ⏳ **33** - Projeto LLMScratch — Modelo Completo (integração)
-- ⏳ **34** - Além de LLMScratch (otimizações, próximos passos)
+- ✅ **33** - Projeto LLMScratch — Arquitetura Modular (scaffold Clean Architecture, 13 arquivos, journey completo)
+- ✅ **34** - Além de LLMScratch (escalar, distributed training, fine-tuning)
 
 ---
 
@@ -66,47 +60,26 @@
 
 | Métrica | Valor |
 |---------|-------|
-| Capítulos Completos | 10/34 |
-| Capítulos em Prototipo | 24 |
-| Palavras Escritas (estimado) | ~40,000+ |
-| Código em Python (blocos) | ~60+ |
-| Exercícios Criados | ~50+ |
-| Exercícios de Fixação | ~50+ |
+| Capítulos Completos | 34/34 (100%) |
+| Palavras Escritas (estimado) | ~150,000+ |
+| Código em Python (blocos) | ~250+ |
+| Exercícios Criados | ~170+ |
+| Exercícios de Fixação | ~170+ |
 
 ---
 
-## 🎯 Próximos Passos (Recomendado)
+## ✨ Características de Cada Capítulo
 
-### Curto Prazo (Para Completar Fundamentais)
-1. Capítulo 11-16: Completar Self-Attention (6 caps)
-2. Capítulo 17-19: Multi-Head + Normalização (3 caps)
-3. Total: 19 capítulos de Atenção/Transformer
+- **Objetivos** (o que você aprende)
+- **Por Que Isso Importa** (motivação, conexão com bugs/debugging reais)
+- **Seções técnicas** (fórmulas em LaTeX, shapes explícitos, exemplo numérico manual)
+- **Experimento(s)** (código PyTorch executável e reprodutível)
+- **Erros Comuns** (pitfalls a evitar, ❌ vs ✓)
+- **Exercícios** (5 exercícios com gabarito)
+- **Desafios Avançados** (5 desafios extras opcionais)
+- **Resumo** (recap + link para o próximo capítulo)
 
-### Médio Prazo (Para Treinar)
-1. Capítulo 20-25: MLP, Transformer, Tokenização (6 caps)
-2. Capítulo 26-30: Loss, Backprop, Otimizadores, Treinamento (5 caps)
-3. Total: 24 capítulos
-
-### Longo Prazo (Para Aplicar)
-1. Capítulo 31-32: Sampling, Geração (2 caps)
-2. Capítulo 33-34: Projeto LLMScratch Completo (2 caps)
-3. Total: Apostila Completa (34 capítulos)
-
----
-
-## ✨ Características Especiais
-
-Cada capítulo inclui:
-- ✅ **Objetivos** (o que você aprende)
-- ✅ **Intuição** (por que é importante)
-- ✅ **Matemática** (fórmulas explicadas passo a passo)
-- ✅ **Implementação Manual** (código do zero)
-- ✅ **Abstração** (uso de nn.Module quando apropriado)
-- ✅ **Experimentos** (2+ experimentos executáveis)
-- ✅ **Exercícios** (5 exercícios com gabarito)
-- ✅ **Fixação Opcionais** (5 desafios extras)
-- ✅ **Erros Comuns** (pitfalls a evitar)
-- ✅ **Resumo** (recap do capítulo)
+O Capítulo 33 foge um pouco desse padrão: em vez de um único bloco de código, guia a construção de um projeto modular de 13 arquivos, inspirado em Clean Architecture (Domain / Application / Infrastructure), do primeiro `config.py` até `main.py` rodando treino e inferência ponta a ponta.
 
 ---
 
@@ -134,5 +107,5 @@ less 01_introducao_e_motivacao.md
 
 ---
 
-**Última Atualização**: 2026-08-25  
-**Versão**: 0.5 (30% completo em termos de capítulos, 80% substancial em conteúdo)
+**Última Atualização**: 2026-08-26
+**Versão**: 1.0 (livro completo, 34/34 capítulos)

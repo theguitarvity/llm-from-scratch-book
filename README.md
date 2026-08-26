@@ -86,8 +86,8 @@ Uma apostila completa em português brasileiro sobre os fundamentos de Large Lan
 
 | Capítulo | Título | Tópicos |
 |----------|--------|---------|
-| [33](chapters/33_projeto_james_jr.md) | Projeto LLMScratch — Modelo Completo | Juntando tudo; treinamento end-to-end; inferência. |
-| [34](chapters/34_James_Jr_avancado.md) | Além de LLMScratch | Otimizações; distributed training; fine-tuning; próximos passos. |
+| [33](chapters/33_projeto_james_jr.md) | Projeto LLMScratch — Arquitetura Modular | Scaffold inspirado em Clean Architecture; projeto arquivo por arquivo; treino e inferência end-to-end. |
+| [34](chapters/34_beyond.md) | Além de LLMScratch | Otimizações; distributed training; fine-tuning; próximos passos. |
 
 ---
 
